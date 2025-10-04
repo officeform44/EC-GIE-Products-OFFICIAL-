@@ -1,0 +1,521 @@
+
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>EC GIE PRODUCTS</title>
+<!-- Google Fonts: Poppins for a sleek, modern look -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+<style>
+  /* Reset & Base Styles */
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #fff;
+    color: #222;
+    line-height: 1.6;
+  }
+
+  /* Container */
+  .container {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 30px 40px;
+    background: #fff;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    border-radius: 12px;
+    animation: fadeIn 1s ease-in-out;
+  }
+
+  /* Headings & Text */
+  h1 {
+    font-family: 'Poppins', sans-serif;
+    color: #8A2BE2; /* Violet */
+    font-weight: 700;
+    font-size: 2.8em;
+    text-align: center;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+    animation: pulse 2s infinite;
+  }
+
+  p.description {
+    text-align: center;
+    font-size: 1.2em;
+    margin-bottom: 25px;
+    color: #444;
+  }
+
+  /* Form styles */
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  label {
+    margin-top: 15px;
+    font-size: 1em;
+    font-weight: 600;
+    color: #333;
+  }
+  input[type="text"],
+  input[type="email"] {
+    padding: 12px 15px;
+    margin-top: 8px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1em;
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+  input[type="text"]:focus,
+  input[type="email"]:focus {
+    border-color: #8A2BE2;
+    box-shadow: 0 0 8px rgba(138,43,226,0.2);
+    outline: none;
+  }
+  .option-group {
+    display: flex;
+    gap: 25px;
+    margin-top: 10px;
+  }
+
+  /* Buttons */
+  button {
+    margin-top: 25px;
+    padding: 14px 25px;
+    background-color: #8A2BE2;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.2em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+  }
+  button:hover {
+    background-color: #7A1BE1;
+    transform: translateY(-2px);
+  }
+
+  /* Hidden */
+  .hidden { display: none; }
+
+  /* Dashboard */
+  h2 {
+    font-family: 'Poppins', sans-serif;
+    color: #8A2BE2;
+    font-size: 2em;
+    margin-bottom: 15px;
+    text-align: center;
+  }
+
+  /* Products grid */
+  .products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+  }
+  .product {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: box-shadow 0.3s, transform 0.3s;
+  }
+  .product:hover {
+    box-shadow: 0 8px 20px rgba(138,43,226,0.2);
+    transform: translateY(-3px);
+  }
+  .product img {
+    width: 100%;
+    max-width: 180px;
+    height: auto;
+    border-radius: 8px;
+  }
+  .product-name {
+    margin-top: 10px;
+    font-weight: 600;
+    font-size: 1.1em;
+    text-align: center;
+    color: #222;
+  }
+  /* Checkbox label */
+  .checkbox-label {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1em;
+    cursor: pointer;
+  }
+
+  /* Price list */
+  .price-list {
+    margin-top: 25px;
+    padding: 15px;
+    background: #f7f7f7;
+    border-radius: 10px;
+    max-height: 400px;
+    overflow-y: auto;
+  }
+  .price-list h3 {
+    margin-bottom: 15px;
+    color: #8A2BE2;
+    text-align: center;
+    font-size: 1.8em;
+  }
+  .price-item {
+    margin-bottom: 10px;
+    font-size: 1em;
+    color: #555;
+  }
+
+  /* Buttons */
+  .btn-shop {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 14px 30px;
+    background-color: #8A2BE2;
+    color: #fff;
+    font-size: 1.3em;
+    border-radius: 12px;
+    text-decoration: none;
+    transition: background-color 0.3s, box-shadow 0.2s;
+  }
+  .btn-shop:hover {
+    background-color: #7A1BE1;
+    box-shadow: 0 4px 12px rgba(138,43,226,0.2);
+  }
+
+  /* Receipt */
+  .receipt {
+    margin-top: 30px;
+    padding: 25px;
+    border-radius: 12px;
+    background-color: #fff;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    animation: fadeIn 1s ease-in-out;
+  }
+  .receipt h3 {
+    margin-bottom: 20px;
+    color: #8A2BE2;
+    text-align: center;
+    font-size: 2em;
+  }
+  #orderDetails p {
+    margin-bottom: 10px;
+    font-size: 1.1em;
+  }
+  a {
+    color: #8A2BE2;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+
+  @keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+  }
+  @keyframes pulse {
+    0% {transform: scale(1);}
+    50% {transform: scale(1.02);}
+    100% {transform: scale(1);}
+  }
+  @media(max-width: 700px){
+    body {
+      padding: 10px;
+    }
+    .container {
+      padding: 20px 15px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- Initial Form -->
+<div class="container" id="initial-form">
+  <h1>Welcome to EC GIE PRODUCTS</h1>
+  <form id="userForm">
+    <label for="facebookName">Facebook Name:</label>
+    <input type="text" id="facebookName" required />
+    <label for="email">Email:</label>
+    <input type="email" id="email" required />
+    <label>Are you a new or existing customer?</label>
+    <div class="option-group">
+      <label><input type="radio" name="customerType" value="new" required /> I am a new customer</label>
+      <label><input type="radio" name="customerType" value="existing" /> I bought before/last time</label>
+    </div>
+    <label for="fbLink">Facebook or FB Link (Required after filling):</label>
+    <input type="text" id="fbLink" required />
+    <button type="submit">Proceed to Dashboard</button>
+  </form>
+</div>
+
+<!-- Main Dashboard -->
+<div class="container hidden" id="dashboard">
+  <h1 style="text-align:center;">EC GIE PRODUCTS</h1>
+  <p class="description">
+    Elevate your lifestyle with our health, wellness, and beauty products—designed to keep you healthy, glowing, and confident, inside and out. 🌿💄💚
+  </p>
+  <p style="text-align:center;">Are you interested in purchasing beauty and health products but have concerns about the reliability of sellers? We invite you to explore EC GIE Products. Our extensive range of products is sourced from trustworthy sellers, ensuring you can shop with confidence.</p>
+  <p style="text-align:center;">For more inquiries, please message:</p>
+  <ul style="text-align:center; list-style: none; margin-bottom: 20px;">
+    <li><a href="https://www.facebook.com/haidy.fidel" target="_blank">https://www.facebook.com/haidy.fidel</a></li>
+    <li><a href="https://www.facebook.com/ec.gieproducts" target="_blank">https://www.facebook.com/ec.gieproducts</a></li>
+  </ul>
+  <div style="text-align:center;">
+    <a href="#" class="btn-shop" id="shopBtn">Shop 🛒</a>
+  </div>
+
+  <!-- Products Section -->
+  <div id="productsSection" class="hidden" style="margin-top:40px;">
+    <h2>Choose Your Products</h2>
+    <div class="products">
+
+      <!-- All products with images, names, checkboxes -->
+      
+      <!-- Product 1 -->
+      <div class="product">
+        <img src="https://i.ibb.co/yFgkz1x3/C24-7.jpg" alt="C24/7" />
+        <div class="product-name">C24/7</div>
+        <label class="checkbox-label"><input type="checkbox" data-name="C24/7" data-price="625" /> Select</label>
+      </div>
+
+      <!-- Product 2 -->
+      <div class="product">
+        <img src="https://i.ibb.co/mVf4zgSL/Complete-Phyto-energizer.jpg" alt="Complete Phyto-energizer" />
+        <div class="product-name">Complete Phyto-energizer</div>
+        <label class="checkbox-label"><input type="checkbox" data-name="Complete Phyto-energizer" data-price="630" /> Select</label>
+      </div>
+
+      <!-- Product 3 -->
+      <div class="product">
+        <img src="https://i.ibb.co/Tq0XSK4P/Choleduz.jpg" alt="Choleduz" />
+        <div class="product-name">Choleduz</div>
+        <label class="checkbox-label"><input type="checkbox" data-name="Choleduz" data-price="630" /> Select</label>
+      </div>
+
+      <!-- Product 4 -->
+      <div class="product">
+        <img src="https://i.ibb.co/PvcnFLtK/Restor-Lyf.jpg" alt="Restor Lyf" />
+        <div class="product-name">Restor Lyf</div>
+        <label class="checkbox-label"><input type="checkbox" data-name="Restor Lyf" data-price="810" /> Select</label>
+      </div>
+
+      <!-- Product 5 -->
+      <div class="product">
+        <img src="https://i.ibb.co/jPbWBCfw/Angel-E.jpg" alt="Angel-E" />
+        <div class="product-name">Angel-E</div>
+        <label class="checkbox-label"><input type="checkbox" data-name="Angel-E" data-price="799" /> Select</label>
+      </div>
+
+      <!-- Product 6 -->
+      <div class="product">
+        <img src="https://i.ibb.co/xSds3J8N/D-Supreme.jpg" alt="D - Supreme" />
+        <div class="product-name">D - Supreme</div>
+        <label class="checkbox-label"><input type="checkbox" data-name="D - Supreme" data-price="800" /> Select</label>
+      </div>
+
+      <!-- Product 7 -->
+      <div class="product">
+        <img src="https://i.ibb.co/xSH1KVgC/C-Supreme.jpg" alt="C-Supreme" />
+        <div class="product-name">C-Supreme</div>
+        <label class="checkbox-label"><input type="checkbox" data-name="C-Supreme" data-price="1200" /> Select</label>
+      </div>
+
+      <!-- Product 8 -->
+      <div class="product">
+        <img src="https://i.ibb.co/HLd36sy9/Barley-Glow.jpg" alt="Barley Glow" />
+        <div class="product-name">Barley Glow</div>
+        <label class="checkbox-label"><input type="checkbox" data-name="Barley Glow" data-price="1700" /> Select</label>
+      </div>
+
+      <!-- Product 9 -->
+      <div class="product">
+        <img src="https://i.ibb.co/spMgvd7K/keopi-glow.jpg" alt="keopi glow" />
+        <div class="product-name">keopi glow</div>
+        <label class="checkbox-label"><input type="checkbox" data-name="keopi glow" data-price="950" /> Select</label>
+      </div>
+
+      <!-- Product 10 -->
+      <div class="product">
+        <img src="https://i.ibb.co/9mTtdT5T/Vida-Drink-Mix.jpg" alt="Vida Drink Mix" />
+        <div class="product-name">Vida Drink Mix</div>
+        <label class="checkbox-label"><input type="checkbox" data-name="Vida Drink Mix" data-price="600" /> Select</label>
+      </div>
+
+      <!-- Product 11 -->
+      <div class="product">
+        <img src="https://i.ibb.co/RGkNvPBt/my-choco.jpg" alt="my choco" />
+        <div class="product-name">my choco</div>
+        <label class="checkbox-label"><input type="checkbox" data-name="my choco" data-price="300" /> Select</label>
+      </div>
+
+      <!-- Product 12 -->
+      <div class="product">
+        <img src="https://i.ibb.co/XZgs8X0d/Liven-Alkaline-Coffee.jpg" alt="Liven Alkaline Coffee" />
+        <div class="product-name">Liven Alkaline Coffee ORIGINAL</div>
+        <label class="checkbox-label"><input type="checkbox" data-name="Liven Alkaline Coffee" data-price="250" /> Select</label>
+      </div>
+
+      <!-- Product 13 -->
+      <div class="product">
+        <img src="https://i.ibb.co/p6TZpjrp/WHITELIGHT.jpg" alt="WHITELIGHT" />
+        <div class="product-name">WHITELIGHT</div>
+        <label class="checkbox-label"><input type="checkbox" data-name="WHITELIGHT" data-price="4915" /> Select</label>
+      </div>
+
+      <!-- Product 14 -->
+      <div class="product">
+        <img src="https://i.ibb.co/5xT248Fs/iGlow-Serum.jpg" alt="iGlow Serum" />
+        <div class="product-name">iGlow Serum</div>
+        <label class="checkbox-label"><input type="checkbox" data-name="iGlow Serum" data-price="2499" /> Select</label>
+      </div>
+
+      <!-- Product 15 -->
+      <div class="product">
+        <img src="https://i.ibb.co/JYvkwcx/iGlow-Collagen.jpg" alt="iGlow 24/7 Collagen" />
+        <div class="product-name">iGlow 24/7 Collagen</div>
+        <label class="checkbox-label"><input type="checkbox" data-name="iGlow 24/7 Collagen" data-price="910" /> Select</label>
+      </div>
+
+      <!-- Product 16 -->
+      <div class="product">
+        <img src="https://i.ibb.co/PZv77dY1/chokchokglow.jpg" alt="chokchokglow" />
+        <div class="product-name">chokchokglow</div>
+        <label class="checkbox-label"><input type="checkbox" data-name="chokchokglow" data-price="410" /> Select</label>
+      </div>
+
+      <!-- Product 17 -->
+      <div class="product">
+        <img src="https://i.ibb.co/hQ1FHMW/Deep-Cleansing-Whitening-Bar.jpg" alt="Deep Cleansing Whitening Bar" />
+        <div class="product-name">Deep Cleansing Whitening Bar</div>
+        <label class="checkbox-label"><input type="checkbox" data-name="Deep Cleansing Whitening Bar" data-price="410" /> Select</label>
+      </div>
+
+      <!-- Product 18 -->
+      <div class="product">
+        <img src="https://i.ibb.co/4ZdThP9C/Oxygen-Bar.jpg" alt="Oxygen Bar" />
+        <div class="product-name">Oxygen Bar</div>
+        <label class="checkbox-label"><input type="checkbox" data-name="Oxygen Bar" data-price="410" /> Select</label>
+      </div>
+
+      <!-- Product 19 -->
+      <div class="product">
+        <img src="https://i.ibb.co/ccHw8SfB/Care-Leaf.jpg" alt="Care Leaf" />
+        <div class="product-name">Care Leaf</div>
+        <label class="checkbox-label"><input type="checkbox" data-name="Care Leaf" data-price="699" /> Select</label>
+      </div>
+
+    </div> <!-- end products grid -->
+
+    <!-- Price List -->
+    <div class="price-list">
+      <h3>Price List</h3>
+      <div class="price-item"><strong>C24/7</strong>: 10pcs - ₱625, 30pcs - ₱1,750</div>
+      <div class="price-item"><strong>Complete Phyto-energizer</strong>: 10pcs - ₱630, 30pcs - ₱1,890</div>
+      <div class="price-item"><strong>Choleduz</strong>: 10pcs - ₱630, 30pcs - ₱1,890</div>
+      <div class="price-item"><strong>Restor Lyf</strong>: 10pcs - ₱810, 30pcs - ₱2,310</div>
+      <div class="price-item"><strong>Angel - E</strong>: 10pcs - ₱799</div>
+      <div class="price-item"><strong>D - Supreme</strong>: 1 box 60pcs - ₱800</div>
+      <div class="price-item"><strong>C - Supreme</strong>: 1 bottle 60pcs - ₱1,200</div>
+      <div class="price-item"><strong>Barley Glow</strong>: 10pcs - ₱1,700</div>
+      <div class="price-item"><strong>Keopi Glow</strong>: 10pcs - ₱950</div>
+      <div class="price-item"><strong>Vida Drink Mix</strong>: 5pcs - ₱600, 10pcs - ₱1,200</div>
+      <div class="price-item"><strong>My Choco</strong>: 5pcs - ₱300, 20pcs - ₱950</div>
+      <div class="price-item"><strong>Liven Alkaline Coffee</strong>: 5pcs - ₱250, 20pcs - ₱850</div>
+      <div class="price-item"><strong>Capuccino</strong>: 5pcs - ₱250, 20pcs - ₱850</div>
+      <div class="price-item"><strong>Latte</strong>: 5pcs - ₱250, 20pcs - ₱850</div>
+      <div class="price-item"><strong>Sugar Free</strong>: 5pcs - ₱250, 20pcs - ₱850</div>
+      <div class="price-item"><strong>WHITELIGHT</strong>: ₱4,915</div>
+      <div class="price-item"><strong>iGlow Serum</strong>: ₱2,499</div>
+      <div class="price-item"><strong>iGlow 24/7 Collagen</strong>: ₱910</div>
+      <div class="price-item"><strong>CHOKCHOK Glow</strong>: ₱410</div>
+      <div class="price-item"><strong>Deep Cleansing Whitening Bar</strong>: ₱410</div>
+      <div class="price-item"><strong>Oxygen Bar</strong>: ₱410</div>
+      <div class="price-item"><strong>Care Leaf</strong>: ₱699</div>
+    </div>
+
+    <!-- Submit order -->
+    <div style="text-align:center; margin-top:30px;">
+      <button id="submitOrder" class="btn-shop">Submit Order</button>
+    </div>
+  </div> <!-- end products section -->
+
+  <!-- Receipt -->
+  <div class="receipt hidden" id="receiptSection">
+    <h3>Order Receipt</h3>
+    <div id="orderDetails"></div>
+    <p style="margin-top:20px;">Please screenshot your receipt and send to our info:</p>
+    <ul style="list-style:none; padding:0; text-align:center;">
+      <li><a href="https://www.facebook.com/haidy.fidel" target="_blank">https://www.facebook.com/haidy.fidel</a></li>
+      <li><a href="https://www.facebook.com/profile.php?id=61581381881664" target="_blank">https://www.facebook.com/profile.php?id=61581381881664</a></li>
+    </ul>
+  </div>
+</div> <!-- end main container -->
+
+<script>
+  // JS for handling form and order
+  const form = document.getElementById('userForm');
+  const initialFormDiv = document.getElementById('initial-form');
+  const dashboardDiv = document.getElementById('dashboard');
+  const productsSection = document.getElementById('productsSection');
+  const shopBtn = document.getElementById('shopBtn');
+  const receiptDiv = document.getElementById('receiptSection');
+  const orderDetailsDiv = document.getElementById('orderDetails');
+  const submitOrderBtn = document.getElementById('submitOrder');
+
+  let userData = {};
+
+  // Submit initial form
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    userData.facebookName = document.getElementById('facebookName').value.trim();
+    userData.email = document.getElementById('email').value.trim();
+    userData.customerType = document.querySelector('input[name="customerType"]:checked').value;
+    userData.fbLink = document.getElementById('fbLink').value.trim();
+    initialFormDiv.classList.add('hidden');
+    dashboardDiv.classList.remove('hidden');
+  });
+
+  // Show products
+  document.getElementById('shopBtn').addEventListener('click', e => {
+    e.preventDefault();
+    productsSection.classList.remove('hidden');
+  });
+
+  // Submit order
+  document.getElementById('submitOrder').addEventListener('click', () => {
+    const checkboxes = document.querySelectorAll('.products input[type="checkbox"]:checked');
+    if (checkboxes.length === 0) { alert('Please select at least one product.'); return; }
+
+    let orderItems = [];
+    let totalPrice = 0;
+    checkboxes.forEach(cb => {
+      const name = cb.dataset.name;
+      const price = parseInt(cb.dataset.price);
+      orderItems.push({ name, price });
+      totalPrice += price;
+    });
+    let html = `
+      <p><strong>Name:</strong> ${userData.facebookName}</p>
+      <p><strong>Email:</strong> ${userData.email}</p>
+      <p><strong>Customer Type:</strong> ${userData.customerType}</p>
+      <p><strong>FB Link:</strong> ${userData.fbLink}</p>
+      <h4 style="margin-top:20px;">Selected Products:</h4>
+      <ul style="margin-left:20px;">${orderItems.map(item => `<li>${item.name} - ₱${item.price}</li>`).join('')}</ul>
+      <p style="margin-top:15px;"><strong>Total Price:</strong> ₱${totalPrice}</p>
+    `;
+    orderDetailsDiv.innerHTML = html;
+    document.getElementById('receiptSection').classList.remove('hidden');
+    document.getElementById('productsSection').classList.add('hidden');
+  });
+</script>
+
+</body>
+</html>
